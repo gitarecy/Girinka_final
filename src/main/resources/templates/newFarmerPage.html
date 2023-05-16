@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Girinka/SaveFarmer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <hr>
+<h1>Save Farmer</h1>
+<form action="#" th:action="@{/saveFarmer}" th:object="${farmer}" method="post">
+    <label>Firstname</label>
+    <input type="text" th:field="*{firstName}" required class="form-control mb-4 col-7">
+    <label>Lastname</label>
+    <input type="text" th:field="*{lastName}" required class="form-control mb-4 col-7">
+    <label>Email</label>
+    <input type="text" th:field="*{email}" required class="form-control mb-4 col-7">
+    <button type="submit" class="btn btn-info col-7"> Save Farmer </button>
+
+</form>
+    <hr>
+
+    <a th:href="@{/getfarmer}"> Farmer List </a> <!-- REMEBER TO CHANGE THIS LINK TO FARMERLISTFORM AS WELL!!!! -->
+
+</div>
+</body>
+</html>

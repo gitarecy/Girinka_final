@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girinka</title>
+  
+  <!-- insert link for pet.css file for looks and everything -->
+  <link th:href="@{/css/home.css}" rel="stylesheet" />
+  
+  
+  <!-- insert cdn link for fonts for the page -->
+  <!-- search for 'font awesome' on cdnjs.com (bootstrap kinda thing)-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  
+</head>
+
+<body>
+	<!-- start of header section -->
+	<!-- The class attribute is set to "header", which is a CSS class that can be used to style this element. -->
+	<header>
+		<a href="#" class="logo"><i class="fas fa-solid fa-seedling"></i> Girinka</a>
+        <!--a href="#" class="logo"><i class="fas fa-paw"></i> Girinka</a-->
+		<div class="menu-btn"></div>
+		<div class="navigation">
+			<div class="navigation-items">
+				<a th:href = "@{/}">Home</a>
+				<a th:href="@{/getfarmer}">Farmers List</a>
+                <a sec:authorize="isAuthenticated()" th:href = "@{/logout}">Sign Out</a>
+			</div>
+		</div>
+	</header>
+	<!-- end of header section -->
+	<!--
+		<div class="icons">
+			<div class="fas fa-bars" id="menu-btn"></div>
+			<a href="#" class="fas fa-dog"></a>
+			<div class="fas fa-user" id="login-btn"></div>
+		</div>
+		
+	-->
+	<section class="home">
+        <video class="video-slide active" th:src="@{/videos/1.mp4}" autoplay muted loop></video>
+		<video class="video-slide" th:src="@{/videos/2.mp4}" autoplay muted loop></video>
+        <video class="video-slide" th:src="@{/videos/3.mp4}" autoplay muted loop></video>
+        <video class="video-slide" th:src="@{/videos/4.mp4}" autoplay muted loop></video>
+        <video class="video-slide" th:src="@{/videos/5.mp4}" autoplay muted loop></video>
+        <video class="video-slide" th:src="@{/videos/.mp4}" autoplay muted loop></video>
+       
+        <div class="content active">
+			<h1>Home-grown<br><span>solution</span></h1>
+			<p>Girinka is a home-grown solution developed by the government of Rwanda to address food insecurity and poverty reduction in the country. The word Girinka can be translated to mean "a cow for a family" in the Kinyarwanda language.</p>	
+		</div>
+
+        <div class="content">
+			<h1>Food Security<br><span>and nutrition</span></h1>
+			<p> The program was initiated in 2006 by President Paul Kagame as a way to provide cows to poor households, with the aim of improving food security, nutrition, and income.</p>	
+		</div>
+
+        <div class="content">
+			<h1>Girinka<br><span>Pass-on</span></h1>
+			<p>Under the Girinka program, the government provides a cow to a poor family, which can then provide milk for the family's consumption or sale, and manure to fertilize their crops. The program also encourages the recipients of cows to pass on the first female calf to another needy family in their community, thus creating a sustainable chain of cow ownership and helping to promote social cohesion.</p>	
+		</div>
+
+        <div class="content">
+			<h1>Reducing<br><span>Poverty</span></h1>
+			<p>Girinka has been a huge success in Rwanda, with the program helping to reduce poverty and malnutrition, while also promoting social cohesion and community development. By 2020, the program had provided over 350,000 cows to poor families across the country.</p>	
+		</div>
+
+        <div class="content">
+			<h1>Social<br><span>Cohesion</span></h1>
+			<p>Girinka promotes social cohesion and solidarity among Rwandan communities. The program emphasizes the importance of giving a cow to a neighbor in need, which creates a culture of generosity and reciprocity. This strengthens relationships within communities, fosters trust, and promotes a sense of unity among Rwandans. Girinka is not just a cattle distribution program; it is a social program that contributes to the overall development and well-being of Rwandans.</p>	
+		</div>
+
+        <div class="content">
+			<h1>Hope<br><span>Symbol</span></h1>
+			<p>Girinka is not only a homegrown solution to poverty, but it is also a symbol of hope for Rwandans. Through this program, farmers have access to a cow, which provides milk for their family's consumption and can be sold for additional income. This enables farmers to improve their standard of living, meet their basic needs, and invest in their future.</p>	
+		</div>
+
+		<div class="media-icons">
+			<a th:href="@{/viewHomePage}"><i class="fab fa-whatsapp"></i></a>
+			<a th:href="@{/viewHomePage}"><i class="fab fa-instagram"></i></a>
+			<a th:href="@{/viewHomePage}"><i class="fab fa-twitter"></i></a>
+		</div>
+        <div class="slider-navigation">
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+	</section>
+    <!-- insert link to javascript source file -->
+	<!--<script src="pet.js"></script>-->
+
+    <!-- add javascript codes to make navigation menu responsive -->
+    <script type="text/javascript">
+        const menuBtn = document.querySelector(".menu-btn");
+        const navigation = document.querySelector(".navigation");
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            navigation.classList.toggle("active");
+        });
+
+        //javascript for video slider navigation
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".video-slide");
+        const contents = document.querySelectorAll(".content");
+
+        var sliderNav = function(manual){
+         btns.forEach((btn) => {
+            btn.classList.remove("active");
+         });
+
+         slides.forEach((slide) => {            slide.classList.remove("active");
+         });
+
+         contents.forEach((content) => {
+            content.classList.remove("active");
+         });
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+            contents[manual].classList.add("active");
+        }
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+    </script>
+</body>
+</html>
